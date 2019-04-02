@@ -1,3 +1,5 @@
+package ir.SimpleGraphDrawer;
+
 import java.awt.*;
 
 public class Node {

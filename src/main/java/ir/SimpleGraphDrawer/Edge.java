@@ -1,3 +1,5 @@
+package ir.SimpleGraphDrawer;
+
 public class Edge {
     private Node source;
     private Node target;
