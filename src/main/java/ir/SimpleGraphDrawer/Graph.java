@@ -1,6 +1,7 @@
 package ir.SimpleGraphDrawer;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Graph {
     private ArrayList<Node> nodes;
@@ -62,5 +63,13 @@ public class Graph {
         if (temp != null)
             return true;
         return false;
+    }
+
+    public Node getRandomNode() {
+        if (nodes.size() == 0)
+            throw new IllegalStateException("Graph has not any nodes");
+        Random rand = new Random();
+        int n = rand.nextInt(nodes.size());
+        return nodes.get(n);
     }
 }
