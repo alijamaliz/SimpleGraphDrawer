@@ -23,7 +23,7 @@ public class Graph {
         return true;
     }
 
-    public boolean addEdge(Node source, Node target) {
+    private boolean addEdge(Node source, Node target) {
         for (Edge edge : edges) {
             if (edge.getSource().equals(source) && edge.getTarget().equals(target))
                 throw new IllegalArgumentException("Only one edge is possible between two nodes");
