@@ -144,4 +144,12 @@ class GraphTest {
                 () -> assertEquals(graph.getNodes().get(3).getLabel(), forthNodeLabel)
         );
     }
+
+    @RepeatedTest(10)
+    @DisplayName(RepeatedTest.LONG_DISPLAY_NAME)
+    void repeatedTest() {
+        for (int i = 0; i < 100; i++)
+            graph.addNode("Node" + i);
+        assertTrue(graph.getRandomNode() instanceof Node);
+    }
 }
