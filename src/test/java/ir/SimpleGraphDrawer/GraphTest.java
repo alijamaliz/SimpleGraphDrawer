@@ -2,7 +2,12 @@ package ir.SimpleGraphDrawer;
 
 import org.junit.jupiter.api.*;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class GraphTest {
@@ -151,5 +156,22 @@ class GraphTest {
         for (int i = 0; i < 100; i++)
             graph.addNode("Node" + i);
         assertTrue(graph.getRandomNode() instanceof Node);
+    }
+
+    @TestFactory
+    @DisplayName("Dynamic test for creating node")
+    Collection<DynamicTest> dynamicTestsFromCollection() {
+        int testsCount = 10;
+        DynamicTest[] dynamicTests = new DynamicTest[testsCount];
+        for (int i = 0; i < testsCount; i++) {
+            String label = "";
+            for (int j = 0; j < new Random().nextInt(8) + 3; j++) {
+                int randomChar = new Random().nextInt(25) + 97;
+                label += (char) randomChar;
+            }
+            String finalLabel = label;
+            dynamicTests[i] = dynamicTest("Create node with label " + finalLabel, () -> assertTrue(graph.addNode(finalLabel)));
+        }
+        return Arrays.asList(dynamicTests);
     }
 }
