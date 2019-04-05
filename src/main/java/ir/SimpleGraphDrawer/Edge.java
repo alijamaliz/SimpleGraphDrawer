@@ -9,6 +9,8 @@ public class Edge {
     public Edge(Node source, Node target) {
         this.source = source;
         this.target = target;
+        this.label = "label";
+        this.weight = 1;
     }
 
     public Edge(Node source, Node target, int weight) {
