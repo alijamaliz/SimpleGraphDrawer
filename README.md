@@ -10,7 +10,7 @@
 
 On OSX:
 ```bash
-    $ brew innstal maven
+    $ brew install maven
 ```
 
 #### Run test with maven:
