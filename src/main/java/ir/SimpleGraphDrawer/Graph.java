@@ -17,6 +17,8 @@ public class Graph {
     public boolean addNode(String label) {
         if (label == null)
             throw new NullPointerException("Node label can hot be null");
+        if (label.length() < 3)
+            throw new IllegalArgumentException("Label is too short");
         if (isLabelExists(label))
             throw new IllegalArgumentException("Node label must be unique in graph");
         Node node = new Node(label);
