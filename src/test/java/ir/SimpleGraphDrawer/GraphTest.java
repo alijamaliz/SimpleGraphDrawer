@@ -1,6 +1,8 @@
 package ir.SimpleGraphDrawer;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -174,4 +176,16 @@ class GraphTest {
         }
         return Arrays.asList(dynamicTests);
     }
+
+
+    @ParameterizedTest
+    @ValueSource(strings = { "ab", "12", "zz" })
+    @DisplayName("Parameterized test for creating node")
+    void testAddNodeWithValueSource(String argument) {
+        Exception exception = assertThrows(IllegalArgumentException.class, () ->
+                graph.addNode(argument)
+        );
+        assertEquals("Label is too short", exception.getMessage());
+    }
+
 }
