@@ -160,6 +160,15 @@ class GraphTest {
         assertTrue(graph.getRandomNode() instanceof Node);
     }
 
+    @Test
+    void getRandomNode() {
+        ;
+        Exception exception = assertThrows(IllegalStateException.class, () ->
+                graph.getRandomNode()
+        );
+        assertEquals("Graph has not any nodes", exception.getMessage());
+    }
+
     @TestFactory
     @DisplayName("Dynamic test for creating node")
     Collection<DynamicTest> dynamicTestsFromCollection() {
@@ -179,7 +188,7 @@ class GraphTest {
 
 
     @ParameterizedTest
-    @ValueSource(strings = { "ab", "12", "zz" })
+    @ValueSource(strings = {"ab", "12", "zz"})
     @DisplayName("Parameterized test for creating node")
     void testAddNodeWithValueSource(String argument) {
         Exception exception = assertThrows(IllegalArgumentException.class, () ->
